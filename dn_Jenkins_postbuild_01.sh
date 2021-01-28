@@ -44,7 +44,7 @@ else
 	echo "进入目标文件出错,请检查"
 	$STAT=1
 fi
-if [ $STA1==0 ] then;
+if [ $STAT==0 ] then;
 	docker build -f $TARGETPATH/Dockerfile mcmsimg
 	$STAT=0
 else
