@@ -1,8 +1,11 @@
-#!/usr/bin/expect
-set timeout 30
-spawn ssh root@192.168.0.22
+#!/usr/bin/expect -f
+set timeout -1
+spawn /usr/bin/ssh root@192.168.0.22 -p 22
 expect {
 "yes/no" { send "yes\r"; exp_continue }
 "password:" { send "root\r" }
 }
-interact
+expect "root@*" { send "sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00\r" }
+expect "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 --restart=always mcmsimg:1.00\r" }
+expect "root@*" { send "sudo docker logout\r" }
+exit
