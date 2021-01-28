@@ -5,10 +5,10 @@ expect {
 "yes/no" { send "yes\r"; exp_continue }
 "password:" { send "root\r" }
 }
-expect "root@*" { send "sudo docker stop $(docker ps -a -q)\r" }
-expect "root@*" { send "sudo docker rm $(docker ps -a -q) -f\r" }
+expect "root@*" { send "sudo docker stop $(docker ps -a -q) \r" }
+expect "root@*" { send "sudo docker rm $(docker ps -a -q) -f \r" }
 expect "root@*" { send "sudo docker login -u tpaul -p Tpaul123 192.168.0.45\r" }
 expect "root@*" { send "sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00\r" }
-expect "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00\r" }
-expect "root@*" { send "sudo docker logout\r" }
+expect "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00 \r" }
+expect "root@*" { send "sudo docker logout \r" }
 exit
