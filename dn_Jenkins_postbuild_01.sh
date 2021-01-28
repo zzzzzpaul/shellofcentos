@@ -40,34 +40,34 @@ cd $TARGETPATH
 if [ $?==0 ] then;
 	wget -O Dockerfile https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/Dockerfile20210128
 	$STAT=0
-else
+else 
 	echo "进入目标文件出错,请检查"
 	$STAT=1
-fi
+fi 
 if [ $STAT==0 ] then;
 	docker build -f $TARGETPATH/Dockerfile mcmsimg
 	$STAT=0
-else
+else 
 	echo "制作镜像出错,请检查"
 	$STAT=1
-fi
+fi 
 # 将镜像推送到harbor仓库
 # tag镜像
 docker login -u tpaul -p Tpaul123 192.168.0.45
 if [ $STAT==0 ] then;
 	docker tag mcmsimg 192.168.0.45/dn_gate_dev/mcmsimg:1.00
 	$STAT=0
-else
+else 
 	echo "镜像tag出错,请检查"
 	$STAT=1
-fi
+fi 
 # 推送镜像
 if [ $STAT==0 ] then;
 	docker push 192.168.0.45/dn_gate_dev/mcmsimg:1.00
 	$STAT=0
-else
+else 
 	echo "推送镜像出错,请检查"
 	$STAT=1
-fi	
-echo "脚本执行完毕,如有报错请检查脚本,退出Harbor服务器登录"
+fi 	
+echo "脚本执行完毕,如有报错请检查脚本,退出Harbor服务器登录" 
 docker logout
