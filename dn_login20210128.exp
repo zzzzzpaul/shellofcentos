@@ -6,6 +6,6 @@ expect {
 "password:" { send "root\r" }
 }
 expect "root@*" { send "sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00\r" }
-expect "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 --restart=always mcmsimg:1.00\r" }
+expect "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00\r" }
 expect "root@*" { send "sudo docker logout\r" }
 exit
