@@ -4,6 +4,6 @@ spawn /usr/bin/ssh root@192.168.0.22 -p 22
 expect {
 "yes/no" { send "yes\r"; exp_continue }
 "password:" { send "root\r" }
-"root@*" { send "wget -O run.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/banner.sh && bash run.sh \r" }
+"root@*" { send "wget -O run.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/dn_login20210129.sh && bash run.sh \r" }
 }
 exit
