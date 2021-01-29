@@ -1,6 +1,6 @@
 #!/bin/bash
 RMLIST=$(sudo docker ps -a -q)
-if [ $RMLIST == "" ] 
+if [ "$RMLIST" = "" ] 
 then
 	echo "未找到运行中的docker容器"
 else
