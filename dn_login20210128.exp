@@ -4,7 +4,6 @@ spawn /usr/bin/ssh root@192.168.0.22 -p 22
 expect {
 "yes/no" { send "yes\r"; exp_continue }
 "password:" { send "root\r" }
-"root@*" { send "wget -O dockerclean.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/deleteall.sh && bash dockerclean.sh \r" }
 "root@*" { send "sudo docker login -u tpaul -p Tpaul123 192.168.0.45 \r" }
 "root@*" { send "sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00 \r" }
 "root@*" { send "sudo docker run -d --name mcms -p 8080:8080 192.168.0.45/dn_gate_dev/mcmsimg:1.00 \r" }
