@@ -14,8 +14,9 @@ echo '没有完美的脚本, 如果安装过程报错, 请查找相关资料修�
 wget -O clearc.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/dockerdelcontainers.sh &&\
 bash clearc.sh &&\
 wget -O cleari.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/dockerdelimages.sh &&\
-bash cleari.sh &&\
+bash cleari.sh ||\
 sudo docker login -u tpaul -p Tpaul123 192.168.0.45 &&\
 sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
 sudo docker run -d --name mcms -p 8080:8080 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
-sudo docker logout
+sudo docker logout &&\
+sudo logout 192.168.0.111
