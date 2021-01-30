@@ -17,5 +17,7 @@ wget -O cleari.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/mast
 bash cleari.sh ||\
 sudo docker login -u tpaul -p Tpaul123 192.168.0.45 &&\
 sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
-sudo docker run -d --name mcms -p 8080:8080 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
-sudo docker logout 
+sudo docker run -d --name mcms -p 8080:8080 --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
+sudo docker logout &&\
+echo "重启服务器中, 请耐心等待..." &&\
+init 6
