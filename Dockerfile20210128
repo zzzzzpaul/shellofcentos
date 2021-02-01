@@ -1,9 +1,9 @@
 FROM openjdk:8-jdk-alpine
 MAINTAINER tpaul "zzzzzpaul@qq.com"
 VOLUME /tmp
-ADD ./src/main/webapp/html html
-ADD ./src/main/webapp/static static
-ADD ./src/main/webapp/template template
-ADD ./src/main/webapp/upload upload
+ADD /var/lib/jenkins/workspace/dn_gate_dev/src/main/webapp/html html
+ADD /var/lib/jenkins/workspace/dn_gate_dev/src/main/webapp/static static
+ADD /var/lib/jenkins/workspace/dn_gate_dev/src/main/webapp/template template
+ADD /var/lib/jenkins/workspace/dn_gate_dev/src/main/webapp/upload upload
 COPY ms-mcms.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
