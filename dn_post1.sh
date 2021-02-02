@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "构建后脚本1, 打包镜像并推送到harbor" &&\
-cd /var/lib/jenkins/workspace/dn_gate_dev/target &&\
-wget -O Dockerfile https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/Dockerfile20210128 &&\
+cd /var/lib/jenkins/workspace/dn_gate_dev/ &&\
+#wget -O Dockerfile https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/Dockerfile20210128 &&\
 sudo docker build -t mcmsimg:1.00 . &&\
 sudo docker login -u tpaul -p Tpaul123 192.168.0.45 &&\
 sudo docker tag mcmsimg:1.00 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
