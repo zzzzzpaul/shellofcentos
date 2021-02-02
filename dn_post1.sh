@@ -15,5 +15,5 @@ sudo docker tag mcmsimg:1.00 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
 sudo docker push 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
 sudo docker logout &&\
 echo "清除镜像" &&\
-wget -O cleanimgs.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/dockerdelimages.sh && bash cleanimgs.sh &&\
+wget -O cleanimgs.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/dockerdelimages.sh && bash cleanimgs.sh ||\
 echo "脚本执行完毕,如有报错请检查脚本,退出Harbor服务器登录"
