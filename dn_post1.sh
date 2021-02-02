@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "============================================================"
+echo "============================================================"
+echo "==              stage 1 starting                          =="
+echo "==   when u see this, that prove download success         =="
+echo "==         构建阶段1,jar包制作镜像并推送到Harbor          =="
+echo "============================================================"
+echo "============================================================" &&\
 echo "构建后脚本1, 打包镜像并推送到harbor" &&\
 cd /var/lib/jenkins/workspace/dn_gate_dev/ &&\
 #wget -O Dockerfile https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/Dockerfile20210128 &&\
