@@ -52,8 +52,8 @@ echo "脚本作者:度牛电商软件开发部--tpaul"
 echo '没有完美的脚本, 如果安装过程报错, 请查找相关资料修改脚本, 或联系脚本作者获得支持'
 sleep 3
 clear
-FRPPATH=/root/frp/
-FRPCONFIGPATH=/root/frp/config/
+FRPPATH=/root/frp
+FRPCONFIGPATH=/root/frp/config
 FRPFILE=/root/frp/config/frpc.ini
 echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安装docker, docker-compose, 并开放7000端口" &&\
 	echo "拉取frp镜像" &&\
