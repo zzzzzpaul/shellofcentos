@@ -72,7 +72,7 @@ echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安�
 	echo 'type = tcp' >> $FRPFILE &&\
 	echo 'local_ip = 127.0.0.1' >> $FRPFILE &&\
 	echo 'local_port = 22' >> $FRPFILE &&\
-	echo 'remote_port = 7001' &&\
+	echo 'remote_port = 7001' >> $FRPFILE &&\
 	echo "启动frp客户端容器" &&\
 docker run --name frpclient -di -v $FRPCONFIGPATH:/var/frp/conf -p 7000:7000 -p 7001:7001 ruiny/frpc &&\
 	echo "frp服务器搭建成功"
