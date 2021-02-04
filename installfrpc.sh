@@ -57,7 +57,7 @@ FRPCONFIGPATH=/root/frp/config
 FRPFILE=/root/frp/config/frpc.ini
 echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安装docker, docker-compose, 并开放7000端口" &&\
 	echo "拉取frp镜像" &&\
-	docker pull chenhw2/frp &&\
+	docker pull ruiny/frpc &&\
 	echo "创建frps配置文件" &&\
 	mkdir $FRPPATH &&\
 	mkdir $FRPCONFIGPATH &&\
@@ -74,5 +74,5 @@ echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安�
 	echo 'local_port = 22' >> $FRPFILE &&\
 	echo 'remote_port = 7001' &&\
 	echo "启动frp客户端容器" &&\
-	docker run -di --name frpclient -e "ARGS=frpc" -v $FRPCONFIGPATH:/frp/frpc.ini --restart=always --privileged=true chenhw2/frp &&\
+docker run --name frpclient -di -v $FRPCONFIGPATH:/var/frp/conf -p 7000:7000 -p 7001:7001 ruiny/frpc &&\
 	echo "frp服务器搭建成功"
