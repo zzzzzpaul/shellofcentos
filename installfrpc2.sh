@@ -82,6 +82,6 @@ echo "开始安装frp服务端, 脚本报错请先检查脚本, 并确定已安�
 	echo 'local_port = 262' >> $FRPFILE &&\
 	echo 'remote_port = 7002' >> $FRPFILE &&\
 	echo "启动frp服务" &&\
-	nohup $FRPPATH/frps -c $FRPFILE & &&\
 	echo "frp服务器搭建成功"
+	nohup $FRPPATH/frps -c $FRPFILE &
 
