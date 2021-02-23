@@ -15,7 +15,7 @@ echo "     #                                                 ####       &@%@@#  
 echo "     ##                                                   #####  &@   @#&   " 
 echo "      #                                                    ######@     &?   "
 echo "      ##                                                    #######@   @@   "
-echo "      ##                                                     ####  ####     "
+echo "      ##                                                     ####  ####     "   
 echo "      ###                                                  ###              "
 echo "      ####                                                ##                "
 echo "      ## #                                              ##                  "
@@ -48,20 +48,22 @@ echo "           |   | '/  ' |   | |--'  |   | '/  ' /  /--'  /  "
 echo "           |   :    :| |   |/      |   :    :|'--'.     /  "
 echo "            \   \  /   '---'        \   \  /    '--'---'   "
 echo "             '----'                  '----'                "
-echo "脚本作者:度牛电商软件开发部--tpaul"
+echo "脚本作者:度牛电商软件开发部--XXX"
 echo '没有完美的脚本, 如果安装过程报错, 请查找相关资料修改脚本, 或联系脚本作者获得支持'
 sleep 3
 clear
-FRPPATH=/root/frp
-FRPCONFIGPATH=/root/frp/config
-FRPFILE=/root/frp/config/frpc.ini
-echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安装docker, docker-compose, 并开放7000端口" &&\
-	echo "拉取frp镜像" &&\
-	docker pull ruiny/frpc &&\
-	echo "创建frps配置文件" &&\
-	mkdir $FRPPATH &&\
-	mkdir $FRPCONFIGPATH &&\
-	touch $FRPFILE &&\
+FRPPATH=/root/frp_0.35.1_linux_amd64
+echo "开始安装frp服务端, 脚本报错请先检查脚本, 并确定已安装docker, docker-compose, 并开放7000端口" &&\
+	echo "下载frp包" &&\
+	wget https://github.com/fatedier/frp/releases/download/v0.35.1/frp_0.35.1_linux_amd64.tar.gz &&\
+	echo "解压frp安装包" &&\
+	tar -vxf frp_0.35.1_linux_amd64.tar.gz &&\
+	cd $FRPPATH &&\
+	cp $FRPPATH/frps.ini $FRPPATH/frps.ini.b &&\
+	cp $FRPPATH/frpc.ini $FRPPATH/frpc.ini.b &&\
+	rm -f $FRPPATH/frpc.ini &&\
+	touch $FRPPATH/frpc.ini &&\
+	FRPFILE=$FRPPATH/frpc.ini
 	chmod +x $FRPFILE &&\
 	echo '[common]' > $FRPFILE &&\
 	echo 'server_addr = 8.136.100.199' >> $FRPFILE &&\
@@ -72,7 +74,12 @@ echo "开始安装frp客户端, 脚本报错请先检查脚本, 并确定已安�
 	echo 'type = tcp' >> $FRPFILE &&\
 	echo 'local_ip = 127.0.0.1' >> $FRPFILE &&\
 	echo 'local_port = 22' >> $FRPFILE &&\
-	echo 'remote_port = 7000' >> $FRPFILE &&\
-	echo "启动frp客户端容器" &&\
-docker run --name frpclient -di -v $FRPCONFIGPATH:/var/frp/conf -p 7000:7000 -p 7001:7001 ruiny/frpc &&\
-	echo "frp服务器搭建成功"
+	echo 'remote_port = 7001' >> $FRPFILE &&\
+	echo '' >> $FRPFILE &&\
+	echo '[web]' >> $FRPFILE &&\
+	echo 'type = tcp' >> $FRPFILE &&\
+	echo 'local_ip = 127.0.0.1' >> $FRPFILE &&\
+	echo 'local_port = 262' >> $FRPFILE &&\
+	echo 'remote_port = 7002' >> $FRPFILE 
+	#nohup $FRPPATH/frps -c $FRPFILE &
+
