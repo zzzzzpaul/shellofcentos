@@ -17,6 +17,6 @@ wget -O cleari.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/mast
 bash cleari.sh ||\
 sudo docker login -u tpaul -p Tpaul123 192.168.0.45 &&\
 sudo docker pull 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
-sudo docker run -d --name mcms -p 8080:8080 -v /html:/root/msdir/html -v /template:/root/msdir/template -v /upload:/root/msdir/upload --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
+sudo docker run -d --name mcms -p 8080:8080 -v /root/msdir/upload:/upload --restart=always 192.168.0.45/dn_gate_dev/mcmsimg:1.00 &&\
 sudo docker logout &&\
 echo "部署成功,请根据接口文档访问测试项目"
