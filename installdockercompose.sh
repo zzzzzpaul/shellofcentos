@@ -1,6 +1,7 @@
 #!/bin/bash
 #基于Docker容器的Portainer安装
 #Surrport By Paul / duniu.LTD, mailto: zzzzzpaul@qq.com
+wget -O logo.sh https://raw.githubusercontent.com/zzzzzpaul/shellofcentos/master/banner.sh && bash logo.sh &&\
 echo '没有完美的脚本, 如果安装过程报错, 请查找相关资料修改脚本, 或联系脚本作者获得支持'
 echo '此脚本将会安装docker-compose环境, 如果安装失败, 安装前请先用sudo su命令进提升到管理员权限'
 echo '开始安装3' &&\
